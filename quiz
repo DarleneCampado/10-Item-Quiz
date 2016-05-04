@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html> <body>
 <p align="center">Harry Potter Quiz!<br></p>
 1. At what age do wizards get a letter from Hogwarts of Witchcraft and Wizardry?<br><input type="number"id="ans1"><br> 
 2. What do wizards call ordinary people?<br><input id="ans2"><br> 
@@ -20,7 +19,9 @@
 function submit(){
     var ans = [ ];
     var score = 0;
+    var j = 2
     var mistakes = [];
+    var key = [0,"muggles","gryffindor","mcgonagall", "snape", "animagus", "parseltongue", "defenseagainstthedarkarts", "voldemort", "always"]
     ans[0] = document.getElementById("ans1").value;
     ans[1] = document.getElementById("ans2").value;
     ans[2] = document.getElementById("ans3").value;
@@ -32,17 +33,11 @@ function submit(){
     ans[8] = document.getElementById("ans9").value;
     ans[9] = document.getElementById("ans10").value;
     if(ans[0]==11){score++}else{mistakes.push("1");}
-    if(ans[1].split('').join('').toLowerCase().replace(/\s+/g, '')=="muggles" || ans[1].split('').join('').toLowerCase().replace(/\s+/g, '')=="muggle"){ score++;
-    }else{ mistakes.push("2");}
-    if(ans[2].split('').join('').toLowerCase().replace(/\s+/g, '')=="gryffindor"){ score++;}else{mistakes.push("3")}
-    if(ans[3].split('').join('').toLowerCase().replace(/\s+/g, '')=="mcgonagall"){ score++;}else{mistakes.push("4")}
-    if(ans[4].split('').join('').toLowerCase().replace(/\s+/g, '')=="snape"){ score++;}else{mistakes.push("5")}
-    if(ans[5].split('').join('').toLowerCase().replace(/\s+/g, '')=="animagus"){ score++;}else{mistakes.push("6")}
-    if(ans[6].split('').join('').toLowerCase().replace(/\s+/g, '')=="parseltongue"){score++;}else{mistakes.push("7")}
-    if(ans[7].split('').join('').toLowerCase().replace(/\s+/g, '')=="defenseagainstthedarkarts"){score++;}else{mistakes.push("8")}
-    if(ans[8].split('').join('').toLowerCase().replace(/\s+/g, '')=="voldemort"){score++;}else{mistakes.push("9")}
-    if(ans[9].split('').join('').toLowerCase().replace(/\s+/g, '')=="always"){score++;}else{mistakes.push("10")}
-    alert("Score: "+ score);
+while(j<11){
+        if(ans[j-1].split('').join('').toLowerCase().replace(/\s+/g, '')==key[j-1]){
+            score++;
+        }else{
+            mistakes.push(j);};j++;}
     document.getElementById("score").innerHTML = "Score: " +score;
     document.getElementById("miss").innerHTML = "Wrong items: " +mistakes;
     }
